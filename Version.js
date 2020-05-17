@@ -10,7 +10,7 @@ class Version {
      * @param {string} versionString 
      */
     constructor(versionString) {
-        if (this.version.split('.').length > 4) throw new Error("Version number not supported");
+        if (versionString.split('.').length > 4) throw new Error("Version number not supported");
         this.version = versionString;
     }
     __verUp(index, step) {
