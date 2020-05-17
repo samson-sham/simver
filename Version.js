@@ -1,3 +1,4 @@
+const MAX_NUM_ATTRIBUTE = 4;
 class Version {
     /**
      * Assumptions:
@@ -10,7 +11,7 @@ class Version {
      * @param {string} versionString 
      */
     constructor(versionString) {
-        if (versionString.split('.').length > 4) throw new Error("Version number not supported");
+        if (versionString.split('.').length > MAX_NUM_ATTRIBUTE) throw new Error("Version number not supported");
         this.version = versionString;
     }
     __verUp(index, step) {
@@ -53,7 +54,7 @@ class Version {
     }
     valueOf() {
         return this.version.split('.').reduce((sum, ver, index, array) => {
-            const magnitude = (array.length - 1) - index;
+            const magnitude = MAX_NUM_ATTRIBUTE - 1 - index;
             return sum + ver * (100 ** magnitude);
         }, 0);
     }
