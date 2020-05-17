@@ -1,6 +1,6 @@
 {
   "name": "simver",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Version",
   "main": "Version.js",
   "scripts": {
@@ -12,5 +12,8 @@
   },
   "author": "Samson Sham",
   "license": "MIT",
-  "keywords": ["versioning", "version"]
+  "keywords": [
+    "versioning",
+    "version"
+  ]
 }
