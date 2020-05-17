@@ -41,7 +41,7 @@ class Version {
      * This will get the Semantic Version without Build attribute
      */
     getVersion() {
-        return this.version.split('.').slice(0, -1).join('.');
+        return this.version.split('.').slice(0, 3).join('.');
     }
     /**
      * This will get only the Build attribute

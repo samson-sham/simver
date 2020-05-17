@@ -11,5 +11,6 @@
     "url": "https://github.com/samson-sham/simver"
   },
   "author": "Samson Sham",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": ["versioning", "version"]
 }
