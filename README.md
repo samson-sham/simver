@@ -1,6 +1,11 @@
 # simver
+ [![NPM version](https://img.shields.io/npm/v/simver.svg?style=flat)](https://www.npmjs.com/package/simver)
+
 Most Simple Version object ever.
 Provides 4 attributes: Major, Minor, Patch, Build
+
+Our goal is to meet 90% of the usage by population and to keep the library dead simple.
+This library will not take care of edge cases.
 
 # Basics
 ```
@@ -47,3 +52,16 @@ const nochange = (new Version("10.5")).patch(); // "10.5", since no patch
 Each of the attributes except Major (Minor, Patch, Build) can only have 2 digit
 
 Ranged from 0.0.0.0 to n.99.99.99
+
+
+# Edge case handling
+If you want to handle edge cases, you're free to extend the Version class.
+
+```
+const Version = require('simver');
+class EscapeCharacterVersion extends Version {
+    constructor(verString) {
+        super(verString.replace(/[^\d.]/g, ""));
+    }
+}
+```

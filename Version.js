@@ -11,15 +11,16 @@ class Version {
      * @param {string} versionString 
      */
     constructor(versionString) {
-        if (versionString.split('.').length > MAX_NUM_ATTRIBUTE) throw new Error("Version number not supported");
+        this.seperator = '.';
+        if (versionString.split(this.seperator).length > MAX_NUM_ATTRIBUTE) throw new Error("Version number not supported");
         this.version = versionString;
     }
     __verUp(index, step) {
-        return this.version.split('.').map((ver, i) => {
+        return this.version.split(this.seperator).map((ver, i) => {
             if (i<index) return ver;
             if (i===index) return parseInt(ver) + step;
             return 0;
-        }).join('.');
+        }).join(this.seperator);
     }
     major(step = 1) {
         this.version = this.__verUp(0,step);
@@ -41,19 +42,19 @@ class Version {
      * This will get the Semantic Version without Build attribute
      */
     getVersion() {
-        return this.version.split('.').slice(0, 3).join('.');
+        return this.version.split(this.seperator).slice(0, 3).join(this.seperator);
     }
     /**
      * This will get only the Build attribute
      */
     getBuild() {
-        return this.version.split('.').pop();
+        return this.version.split(this.seperator).pop();
     }
     toString() {
         return this.version;
     }
     valueOf() {
-        return this.version.split('.').reduce((sum, ver, index, array) => {
+        return this.version.split(this.seperator).reduce((sum, ver, index) => {
             const magnitude = MAX_NUM_ATTRIBUTE - 1 - index;
             return sum + ver * (100 ** magnitude);
         }, 0);
